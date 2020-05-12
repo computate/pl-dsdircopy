@@ -1,5 +1,5 @@
 ##########
-pl-dircopy
+pl-dsdircopy
 ##########
 
 
