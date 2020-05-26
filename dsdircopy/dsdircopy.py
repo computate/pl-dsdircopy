@@ -9,6 +9,7 @@
 #
 
 import os
+import pudb
 
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
@@ -50,7 +51,7 @@ class DsdirCopy(ChrisApp):
         """
         self.add_argument('--dir', 
                           dest          = 'dir', 
-                          type          = ChrisApp.path, 
+                          type          = str, 
                           optional      = False,
                           help          = 'directory to be copied')
 
@@ -61,7 +62,9 @@ class DsdirCopy(ChrisApp):
         #output_folder = os.path.basename(options.dir.rstrip('/'))
         #output_path = os.path.join(options.outputdir, output_folder)
         #print('Copying %s to %s' % (options.inputdir, options.outputdir))
-        copy_tree(options.inputdir, options.outputdir)
+        #copy_tree('%s/%s', (options.inputdir, options.dir), options.outputdir)
+        #pudb.set_trace()
+        copy_tree(options.dir, options.outputdir)
 
 
 # ENTRYPOINT
