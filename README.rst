@@ -26,7 +26,7 @@ The directory passed to the ``--dir`` argument should be within the specified ``
 
 .. code-block:: bash
 
-        python3 dsdircopy.py <inputDir> <outputDir> --dir <directory in the inputDir to be copied>
+        python3 dsdircopy.py <inputDir> <outputDir> --dir <directory>
 
    
 Using ``docker run``
