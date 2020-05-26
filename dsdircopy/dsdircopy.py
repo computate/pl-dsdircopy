@@ -62,9 +62,9 @@ class DsdirCopy(ChrisApp):
         #output_folder = os.path.basename(options.dir.rstrip('/'))
         #output_path = os.path.join(options.outputdir, output_folder)
         #print('Copying %s to %s' % (options.inputdir, options.outputdir))
-        #copy_tree('%s/%s', (options.inputdir, options.dir), options.outputdir)
+        copy_tree('%s/%s' % (options.inputdir, options.dir), options.outputdir)
         #pudb.set_trace()
-        copy_tree(options.dir, options.outputdir)
+        #copy_tree(options.dir, options.outputdir)
 
 
 # ENTRYPOINT

@@ -17,10 +17,32 @@ When running this plugin from a client perspective to CUBE, note that the *input
 Run
 ***
 
+As a simple Python Application
+==============================
+
+Make sure your current working directory is ``dsdircopy`` which contains the file ``dsdircopy.py``. 
+
+The directory passed to the ``--dir`` argument should be within the specified ``inputDir``.
+
+.. code-block:: bash
+
+        python3 dsdircopy.py <inputDir> <outputDir> --dir <directory in the inputDir to be copied>
+
+   
 Using ``docker run``
 ====================
 
-Assign an "input" directory to ``/incoming`` and an output directory to ``/outgoing``
+Build the docker image using the ``docker build`` command
+
+.. code-block:: bash
+
+        docker build -t fnndsc/pl-dsdircopy .
+
+Now, use the ``docker run`` command to run the docker image we created above.
+
+Assign an "input" directory to ``/incoming`` and an output directory to ``/outgoing``.
+
+You also need to assign a directory within the ``inputDir`` to the ``--dir`` argument.
 
 .. code-block:: bash
 
@@ -28,7 +50,7 @@ Assign an "input" directory to ``/incoming`` and an output directory to ``/outgo
             fnndsc/pl-dsdircopy dsdircopy.py            \
             --dir /incoming /outgoing
 
-The above will recursively copy the entire host ``/home`` dir to the container's ``/outgoing``
+The above command will recursively copy the directory passed to the ``--dir`` argument to the container's ``/outgoing``
 which in turn has been volume mapped to the host ``$(pwd)/out`` directory.
 
 Make sure that the host ``$(pwd)/out`` directory is world writable!
