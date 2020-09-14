@@ -6,13 +6,13 @@ pl-dsdircopy
 Abstract
 ********
 
-A ChRIS *DS* (Data Synthesis) plugin app that copies file/dir data from an input source to an output sink. If called directly, i.e. from the command line, the *input directory* is an actual specification on an actual filesystem. If called from a client that is talking to CUBE, this *input directory* is interpreted to mean a location within swift storage, and is *not* a file system location.
+A ChRIS *DS* (Data Synthesis) plugin app that copies files/dirs data from one or more input sources in obj storage to an output sink.
 
 
 Pre-conditions
 **************
 
-When running this plugin from a client perspective to CUBE, note that the *input directory* is actually assumed to exist within swift storage, thus the value of the *input directory* is the prefix within swift storage. See the wiki pages of CUBE for more information.
+When running this plugin from a client perspective to CUBE, note that the *input directories* are actually assumed to exist within obj storage, thus the value of the *input directories* are the prefixes within obj storage. See the wiki pages of CUBE for more information.
 
 Run
 ***
@@ -22,11 +22,11 @@ As a simple Python Application
 
 Make sure your current working directory is ``dsdircopy`` which contains the file ``dsdircopy.py``. 
 
-The directory passed to the ``--dir`` argument should be within the specified ``inputDir``.
+The ``--dir`` argument is a string of paths separated by commas.
 
 .. code-block:: bash
 
-        python3 dsdircopy.py <inputDir> <outputDir> --dir <directory>
+        python3 dsdircopy.py <inputDir> <outputDir> --dir <path1, path2>
 
    
 Using ``docker run``
@@ -42,16 +42,15 @@ Now, use the ``docker run`` command to run the docker image we created above.
 
 Assign an "input" directory to ``/incoming`` and an output directory to ``/outgoing``.
 
-You also need to assign a directory within the ``inputDir`` to the ``--dir`` argument.
+You also need to assign a string of paths separated by commas to the ``--dir`` argument.
 
 .. code-block:: bash
 
     docker run -v $(pwd):/incoming -v $(pwd)/out:/outgoing   \
             fnndsc/pl-dsdircopy dsdircopy.py            \
-            --dir /incoming /outgoing
+            --dir "chris/dir1, chris/dir2" /incoming /outgoing
 
-The above command will recursively copy the directory passed to the ``--dir`` argument to the container's ``/outgoing``
-which in turn has been volume mapped to the host ``$(pwd)/out`` directory.
+The above command will do nothing as this is a sort of a ChRIS topological plugin that is not meant to be run from the command line.
 
 Make sure that the host ``$(pwd)/out`` directory is world writable!
 

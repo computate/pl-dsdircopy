@@ -13,24 +13,25 @@ import pudb
 
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
-from distutils.dir_util import copy_tree
+#from distutils.dir_util import copy_tree
 
 class DsdirCopy(ChrisApp):
     """
-    Copy the *contents* of a directory given by the --dir argument to a new 
-    directory specified by <options.outpudir>.
+    Copy the *contents* of one or more obj storage directories given by the --dir
+    argument to a new directory specified by <options.outpudir>. This argument is a
+    string containing one or more directories separated by comma.
     """
     AUTHORS         = 'FNNDSC (dev@babyMRI.org)'
     SELFPATH        = os.path.dirname(os.path.abspath(__file__))
     SELFEXEC        = os.path.basename(__file__)
     EXECSHELL       = 'python3'
-    TITLE           = 'A directory copy chris ds app'
+    TITLE           = 'A ChRIS ds app to copy obj storage directories'
     CATEGORY        = 'copy'
     TYPE            = 'ds'
-    DESCRIPTION     = 'A plugin ds app to copy an entire directory'
+    DESCRIPTION     = 'A plugin ds app to copy one or more obj storage directories'
     DOCUMENTATION   = 'http://wiki'
     LICENSE         = 'Opensource (MIT)'
-    VERSION         = '0.1.1'
+    VERSION         = '1.0.0'
     MAX_NUMBER_OF_WORKERS = 1  # Override with integer value
     MIN_NUMBER_OF_WORKERS = 1  # Override with integer value
     MAX_CPU_LIMIT = ''  # Override with millicore value as string, e.g. '2000m'
@@ -51,9 +52,9 @@ class DsdirCopy(ChrisApp):
         """
         self.add_argument('--dir', 
                           dest          = 'dir', 
-                          type          = str, 
+                          type          = ChrisApp.unextpath,
                           optional      = False,
-                          help          = 'directory to be copied')
+                          help          = 'directories to be copied')
 
     def run(self, options):
         """
@@ -62,9 +63,9 @@ class DsdirCopy(ChrisApp):
         #output_folder = os.path.basename(options.dir.rstrip('/'))
         #output_path = os.path.join(options.outputdir, output_folder)
         #print('Copying %s to %s' % (options.inputdir, options.outputdir))
-        copy_tree('%s/%s' % (options.inputdir, options.dir), options.outputdir)
         #pudb.set_trace()
         #copy_tree(options.dir, options.outputdir)
+        pass
 
 
 # ENTRYPOINT
