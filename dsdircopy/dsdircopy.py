@@ -31,7 +31,7 @@ class DsdirCopy(ChrisApp):
     DESCRIPTION     = 'A plugin ds app to copy one or more obj storage directories'
     DOCUMENTATION   = 'http://wiki'
     LICENSE         = 'Opensource (MIT)'
-    VERSION         = '1.0.0'
+    VERSION         = '1.0.1'
     MAX_NUMBER_OF_WORKERS = 1  # Override with integer value
     MIN_NUMBER_OF_WORKERS = 1  # Override with integer value
     MAX_CPU_LIMIT = ''  # Override with millicore value as string, e.g. '2000m'
