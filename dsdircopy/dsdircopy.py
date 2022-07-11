@@ -13,7 +13,7 @@ import pudb
 
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
-#from distutils.dir_util import copy_tree
+from distutils.dir_util import copy_tree
 
 class DsdirCopy(ChrisApp):
     """
@@ -47,24 +47,14 @@ class DsdirCopy(ChrisApp):
     OUTPUT_META_DICT = {}
 
     def define_parameters(self):
-        """
-        Define the CLI arguments accepted by this plugin app.
-        """
-        self.add_argument('--dir', 
-                          dest          = 'dir', 
-                          type          = ChrisApp.unextpath,
-                          optional      = False,
-                          help          = 'directories to be copied')
+        pass
 
     def run(self, options):
         """
         Define the code to be run by this plugin app.
         """
-        #output_folder = os.path.basename(options.dir.rstrip('/'))
-        #output_path = os.path.join(options.outputdir, output_folder)
-        #print('Copying %s to %s' % (options.inputdir, options.outputdir))
-        #pudb.set_trace()
-        #copy_tree(options.dir, options.outputdir)
+        print('Copying %s to %s' % (options.inputdir, options.outputdir))
+        copy_tree(options.inputdir, options.outputdir)
         pass
 
 

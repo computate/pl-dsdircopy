@@ -6,3 +6,6 @@ docs/build
 htmlcov
 .docker
 .idea/
+.project
+incoming
+outgoing
