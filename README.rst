@@ -54,7 +54,24 @@ The above command will do nothing as this is a sort of a ChRIS topological plugi
 
 Make sure that the host ``$(pwd)/out`` directory is world writable!
 
+# Running pl-dsdircopy in Podman on RHEL
 
+```bash
+install -d ~/.local/src/pl-dsdircopy
+# Copy an files to the incoming directory to copy: 
+rsync ~/Pictures/* ~/.local/src/pl-dsdircopy/incoming/
+git clone git@github.com:computate/pl-dsdircopy.git ~/.local/src/pl-dsdircopy
+cd ~/.local/src/pl-dsdircopy
+install -d incoming
+install -d outgoing
+podman build -t computate/pl-dsdircopy .
+podman run --privileged -v ~/.local/src/pl-dsdircopy/in
+coming:/incoming -v ~/.local/src/pl-dsdircopy/outgoing:/outgoing computate/pl-dsdircopy dsdir
+copy.py /incoming /outgoing
+ls incoming/
+ls outgoing/
+# Check that the outgoing directory contains what you were expecting to copy. 
+```
 
 
 
