@@ -54,7 +54,8 @@ The above command will do nothing as this is a sort of a ChRIS topological plugi
 
 Make sure that the host ``$(pwd)/out`` directory is world writable!
 
-# Running pl-dsdircopy in Podman on RHEL
+Running pl-dsdircopy in Podman on RHEL
+======================================
 
 .. code-block:: bash
 
