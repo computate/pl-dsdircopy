@@ -9,7 +9,7 @@
 #
 
 import os
-import pudb
+import chrisapp
 
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
@@ -55,7 +55,6 @@ class DsdirCopy(ChrisApp):
         """
         print('Copying %s to %s' % (options.inputdir, options.outputdir))
         copy_tree(options.inputdir, options.outputdir)
-        pass
 
 
 # ENTRYPOINT
